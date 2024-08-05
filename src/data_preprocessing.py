@@ -7,8 +7,10 @@ def load_and_preprocess_data(train_imgs_filename, train_labels_filename, test_im
     x_train = np.load(os.path.join(root_dir, train_imgs_filename))['arr_0']
     y_train = np.load(os.path.join(root_dir, train_labels_filename))['arr_0']
 
-    y_test = np.load(os.path.join(root_dir, test_imgs_filename))['arr_0']
+    x_test = np.load(os.path.join(root_dir, test_imgs_filename))['arr_0']
     y_test = np.load(os.path.join(root_dir, test_labels_filename))['arr_0']
 
     x_train = x_train.reshape(-1, 28, 28, 1).astype('float32') / 255
-    x
+    x_test = x_test.reshape(-1, 28, 28, 1).astype('float32') / 255
+
+    return (x_train, y_train), (x_test, y_test)
